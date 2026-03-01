@@ -11,7 +11,7 @@ Addon to automate certain tasks in the Foxhole modding process
 
 
 # Installation 
-Under [releases](https://github.com/Austin12325/Foxhole-Blender-addon/releases/tag/1.0) download the latest zip file 
+Under [releases](https://github.com/Wolfgang-IX/Foxhole-Blender-addon/releases) download the latest zip file 
 Install through the addons menu in the Blender preferences.
 
 # Media: 
