@@ -560,6 +560,7 @@ class SNA_OT_Ausassignmaterial_Dcea2(bpy.types.Operator):
 
     def execute(self, context):
         from glob import glob
+        from platform import system as platform_system
         ### TO DO: ###
         #Get a check for noise mask on import, the line doesn't have a space after the ', so the period isn't there.
         # Did I just fix that lmao?
@@ -634,7 +635,10 @@ class SNA_OT_Ausassignmaterial_Dcea2(bpy.types.Operator):
             print('Line index -1',test)
             texpath = content[text].replace("ParameterValue = Texture2D'/War/Content/", "", text).strip(' ')
             image = ((texpath.split('.')[-1][:-2]))
-            filepath = (dirpath+texpath.split(image)[0].replace("/", "\\")+image+".png")
+            if platform_system() == 'Linux': # test if the script is run from a Linux OS 
+                filepath = (dirpath+texpath.split(image)[0]+image+".png") # For Linux case (new)
+            else: # could use the same method as above for checking if Windows, but can't be bothered (and it worked fine until then)
+                filepath = (dirpath+texpath.split(image)[0].replace("/", "\\")+image+".png") # For Windows case (old)
             mat = bpy.context.object.active_material
             matlinks = bpy.context.object.active_material.node_tree.links
             imagefix = (image+'.png')
